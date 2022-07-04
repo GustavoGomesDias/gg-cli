@@ -24,7 +24,7 @@ import (
 func RunCommit(msg string) {
 	// commit := "git add .; git commit -m " + msg
 
-	cmd := exec.Command("/bin/sh", "-c", "git add .; git commit -m "+msg+";")
+	cmd := exec.Command("/bin/sh", "-c", "git add .; git commit -m '"+msg+"';")
 	stdout, err := cmd.Output()
 
 	if err != nil {
