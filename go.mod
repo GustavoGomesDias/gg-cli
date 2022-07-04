@@ -1,3 +1,3 @@
-module gg
+module ggg
 
 go 1.18
