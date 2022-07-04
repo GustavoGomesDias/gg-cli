@@ -56,6 +56,17 @@ func RunCommitWithPush(msg string, local string, branch string) {
 	fmt.Println(string(stdout))
 }
 
+func RunCommitWithPushMain(msg string) {
+	cmd := exec.Command("/bin/sh", "-c", "git add .; git commit -m '"+msg+"'; git push origin main")
+	stdout, err := cmd.Output()
+
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(string(stdout))
+}
+
 func RunAmmmend() {
 	cmd := exec.Command("git", "commit", "--amend")
 	stdout, err := cmd.Output()
@@ -67,7 +78,7 @@ func RunAmmmend() {
 	fmt.Println(string(stdout))
 }
 
-func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool, push *string, local *string, branch *string) {
+func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool, push *string, local *string, branch *string, main *string) {
 	if *commit != "" {
 		message := *commit
 		fmt.Println(message)
@@ -82,6 +93,12 @@ func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool, push *st
 
 	if *push != "" {
 		RunCommitWithPush(*push, *local, *branch)
+		return
+	}
+
+	if *main != "" {
+		RunCommitWithPushMain(*main)
+		return
 	}
 
 	if *commit == "" && *ammend == false && *push == "" {
