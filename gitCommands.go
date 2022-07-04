@@ -35,7 +35,7 @@ func RunCommit(msg string) {
 }
 
 func RunAmmmend() {
-	cmd := exec.Command("git", "commit", "--ammend")
+	cmd := exec.Command("git", "commit", "--amend")
 	stdout, err := cmd.Output()
 
 	if err != nil {
