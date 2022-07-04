@@ -22,13 +22,9 @@ import (
 // }
 
 func RunCommit(msg string) {
-	// user := GetUserNameInLinux()
-	// if user == "" {
-	// 	return
-	// }
+	commit := "git add .; git commit -m " + msg
 
-	cmd := exec.Command("git", "log")
-	// cmd.Dir = "/home/" + user
+	cmd := exec.Command("/bin/sh", "-c", commit)
 	stdout, err := cmd.Output()
 
 	if err != nil {

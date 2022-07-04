@@ -3,6 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	RunCommit("teste")
+	RunCommit("feat: add commit command")
 	fmt.Println("Hello, world.")
 }
