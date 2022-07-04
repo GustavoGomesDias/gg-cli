@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os/exec"
 )
@@ -22,7 +23,6 @@ import (
 // }
 
 func RunCommit(msg string) {
-	// commit := "git add .; git commit -m " + msg
 
 	cmd := exec.Command("/bin/sh", "-c", "git add .; git commit -m '"+msg+"';")
 	stdout, err := cmd.Output()
@@ -32,4 +32,29 @@ func RunCommit(msg string) {
 	}
 
 	fmt.Println(string(stdout))
+}
+
+func RunAmmmend() {
+	cmd := exec.Command("git", "commit", "--ammend")
+	stdout, err := cmd.Output()
+
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(string(stdout))
+}
+
+func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool) {
+	if *commit != "" {
+		message := *commit
+		fmt.Println(message)
+		RunCommit(message)
+	}
+
+	if *ammend != false {
+		RunAmmmend()
+	}
+
+	fmt.Println("Use --msg for run commit command or --am for run rewrite last commit")
 }

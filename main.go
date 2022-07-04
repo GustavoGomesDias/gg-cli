@@ -8,7 +8,8 @@ import (
 
 func main() {
 	gitCmd := flag.NewFlagSet("g", flag.ExitOnError)
-	commitMsg := gitCmd.String("msg", "", "Commit message")
+	commit := gitCmd.String("msg", "", "Run commit command with message")
+	ammend := gitCmd.Bool("am", false, "Run ammend command")
 
 	if len(os.Args) < 2 {
 		fmt.Println("expected commit message (-msg)")
@@ -17,8 +18,6 @@ func main() {
 
 	if os.Args[1] == "g" {
 		gitCmd.Parse(os.Args[2:])
-		message := *commitMsg
-		fmt.Println(message)
-		RunCommit(message)
+		RunGitFunction(gitCmd, commit, ammend)
 	}
 }
