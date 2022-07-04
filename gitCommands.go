@@ -46,7 +46,7 @@ func RunCommitWithPush(msg string, local string, branch string) {
 
 	ValidatePush(msg, local, branch)
 
-	cmd := exec.Command("/bin/sh", "-c", "git add .; git commit -m '"+msg+"'; git push"+local+branch+";")
+	cmd := exec.Command("/bin/sh", "-c", "git add .; git commit -m '"+msg+"'; git push "+local+" "+branch+";")
 	stdout, err := cmd.Output()
 
 	if err != nil {
