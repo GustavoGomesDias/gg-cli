@@ -1,3 +1,3 @@
-module gg-cli
+module gg
 
 go 1.18
