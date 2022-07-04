@@ -50,11 +50,15 @@ func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool) {
 		message := *commit
 		fmt.Println(message)
 		RunCommit(message)
+		return
 	}
 
 	if *ammend != false {
 		RunAmmmend()
+		return
 	}
 
-	fmt.Println("Use --msg for run commit command or --am for run rewrite last commit")
+	if *commit == "" && *ammend == false {
+		fmt.Println("Use '--msg' for run commit command or '--am' for run rewrite last commit")
+	}
 }
