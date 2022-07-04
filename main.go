@@ -16,7 +16,7 @@ func main() {
 	ammend := gitCmd.Bool("am", false, "Run amend command")
 
 	if len(os.Args) < 2 {
-		fmt.Println("expected commit message (--msg), amend command (--am) or commit with push (--msgp, --l and --br)")
+		fmt.Println("Expected commit message (--msg), amend command (--am), commit with push (--msgp, --l and --br) or commit with push in main (--main).")
 		os.Exit(1)
 	}
 

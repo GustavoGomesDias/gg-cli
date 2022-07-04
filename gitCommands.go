@@ -37,7 +37,7 @@ func RunCommit(msg string) {
 
 func ValidatePush(msg string, local string, branch string) {
 	if msg == "" || local == "" || branch == "" {
-		fmt.Print("msgp, local and branch is required")
+		fmt.Print("Msgp, local and branch is required")
 		os.Exit(1)
 	}
 }
