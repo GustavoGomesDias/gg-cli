@@ -86,7 +86,7 @@ func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool, push *st
 		return
 	}
 
-	if *ammend != false {
+	if *ammend {
 		RunAmmmend()
 		return
 	}
@@ -101,7 +101,7 @@ func RunGitFunction(gitCmd *flag.FlagSet, commit *string, ammend *bool, push *st
 		return
 	}
 
-	if *commit == "" && *ammend == false && *push == "" {
+	if *commit == "" && !*ammend && *push == "" {
 		fmt.Println("Use '--msg' for run commit command, '--am' for run rewrite last commit or '--msgp' for commit and push")
 	}
 }
