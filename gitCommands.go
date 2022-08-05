@@ -101,7 +101,12 @@ func HandleGitCommands() {
 
 	if len(os.Args) < 2 {
 		fmt.Println("Expected 'g' tag for git actions:")
-		fmt.Println("	commit message (--msg), amend command (--am), commit with push (--msgp, --l and --br) or commit with push in main (--main).")
+		fmt.Println(`
+		commit message (--msg)
+		amend command (--am)
+		commit with push (--msgp, --l and --br)
+		commit with push in main (--main)
+		`)
 		os.Exit(1)
 	}
 
